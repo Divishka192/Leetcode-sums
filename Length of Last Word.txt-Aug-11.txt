@@ -1,0 +1,126 @@
+58. Length of Last Word
+Solved
+Easy
+Topics
+premium lock icon
+Companies
+Given a string s consisting of words and spaces, return the length of the last word in the string.
+
+A word is a maximal substring consisting of non-space characters only.
+
+ 
+
+Example 1:
+
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
+Example 2:
+
+Input: s = "   fly me   to   the moon  "
+Output: 4
+Explanation: The last word is "moon" with length 4.
+Example 3:
+
+Input: s = "luffy is still joyboy"
+Output: 6
+Explanation: The last word is "joyboy" with length 6.
+ 
+
+Constraints:
+
+1 <= s.length <= 104
+s consists of only English letters and spaces ' '.
+There will be at least one word in s.
+
+
+
+code:
+class Main {
+    public static int lastword(String s) {
+        s = s.trim();
+        int count = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == ' ') {
+                break;
+            }
+            count++;
+        }
+
+        return count;
+    }
+}
+
+1. s = s.trim();
+
+Removes spaces from the beginning and end.
+
+Example:
+
+" Hello World   "
+
+becomes:
+
+"Hello World"
+2. int count = 0;
+
+We create count to count the letters of the last word.
+
+int count = 0;
+3. Start from the end
+for (int i = s.length() - 1; i >= 0; i--)
+
+We start from the last character because we need the last word.
+
+For:
+
+"Hello World"
+
+Indexes are:
+
+ H  e  l  l  o     W  o  r  l  d
+ 0  1  2  3  4  5  6  7  8  9  10
+
+So:
+
+s.length() - 1
+
+is 10.
+
+We go:
+
+d → l → r → o → W → space
+4. Check for space
+if (s.charAt(i) == ' ') {
+    break;
+}
+
+charAt(i) gets the character at position i.
+
+When we reach the space:
+
+Hello World
+     ↑
+
+break stops the loop.
+
+5. Count each letter
+count++;
+
+For "World":
+
+d → count = 1
+l → count = 2
+r → count = 3
+o → count = 4
+W → count = 5
+space → stop
+6. Return the answer
+return count;
+
+So:
+
+"Hello World"
+
+➡️ Answer = 5
