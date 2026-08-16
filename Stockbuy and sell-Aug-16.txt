@@ -1,0 +1,91 @@
+package arrays;
+
+import java.util.Scanner;
+
+public class StockBuyAndSell {
+
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter n");
+		        int n = sc.nextInt();
+		        int a[] = new int[n];
+
+		        for (int i = 0; i < n; i++) {
+		            a[i] = sc.nextInt();
+		        }
+int profit=0;
+for(int i=0;i<n;i++) {
+	for(int j=i+1;j<n;j++) {
+		int currentprofit=a[j]-a[i];
+		if(currentprofit>profit) {
+			profit=currentprofit;
+		}
+	}
+}
+System.out.print(profit);
+
+	}
+
+}
+/*Stock Buy and Sell
+
+Imagine you have a stock price for each day:
+
+7  1  5  3  6  4
+
+Each number is the price of the stock on that day.
+
+Day:    0  1  2  3  4  5
+Price:  7  1  5  3  6  4
+
+Your job is:
+
+Choose one day to BUY and a later day to SELL so that you get the maximum profit.
+
+Example
+
+You can buy on day 1:
+
+Price = 1
+
+Then sell on day 4:
+
+Price = 6
+
+Your profit is:
+
+Selling price - Buying price
+= 6 - 1
+= 5
+
+So the answer is:
+
+5
+Why not buy at 7 and sell at 6?
+
+Because:
+
+6 - 7 = -1
+
+You lose money.
+
+Why can't we buy at 1 and sell at 7?
+
+Because 7 happened before 1.
+
+You must:
+
+BUY → SELL
+
+not:
+
+SELL → BUY
+Think of it like this
+7   1   5   3   6   4
+    ↑           ↑
+   BUY         SELL
+    1            6
+
+
+       PROFIT = 6 - 1 = 5 */
