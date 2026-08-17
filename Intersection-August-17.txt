@@ -1,0 +1,194 @@
+package arrays;
+import java.util.*;
+public class Intersection {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int a[]=new int[n];
+		for(int i=0;i<n;i++) {
+			a[i]=sc.nextInt();
+		}
+		int m=sc.nextInt();
+		int b[]=new int[m];
+		for(int j=0;j<m;j++) {
+			b[j]=sc.nextInt();
+		}
+		for(int i=0;i<n;i++) {
+			boolean d=false;
+			for(int j=0;j<i;j++) {
+			
+				
+				if(a[i]==a[j]) {
+					d=true;
+					break;
+				}
+			}
+			if(d) {
+				continue;
+			}
+			//it skips current iteration
+			boolean f=false;
+			for(int j=0;j<m;j++) {
+				if(a[i]==b[j]) {
+					f=true;
+					break;
+				}
+			}
+		
+		if(f) {
+			System.out.print(a[i]+" ");
+		}
+		}
+	}
+
+}
+/*# Example Explanation for `j < i` in the Intersection Program
+
+Consider the following array:
+
+```java
+a = [5, 2, 5, 3, 2]
+```
+
+The loop is:
+
+```java
+for (int j = 0; j < i; j++) {
+    if (a[i] == a[j]) {
+        d = true;
+        break;
+    }
+}
+```
+
+We use `j < i` because we want to compare the current element only with the elements that come before it.
+
+## When `i = 0`
+
+```java
+a[0] = 5
+```
+
+There are no previous elements, so no comparison is made.
+
+`5` is not a duplicate.
+
+---
+
+## When `i = 1`
+
+```java
+a[1] = 2
+```
+
+Compare with previous elements:
+
+```java
+j = 0
+
+2 == 5 → false
+```
+
+`2` is not a duplicate.
+
+---
+
+## When `i = 2`
+
+```java
+a[2] = 5
+```
+
+Compare with previous elements:
+
+```java
+j = 0
+
+5 == 5 → true
+```
+
+A duplicate is found.
+
+```java
+d = true;
+break;
+```
+
+Then:
+
+```java
+if (d) {
+    continue;
+}
+```
+
+The second `5` is skipped.
+
+---
+
+## When `i = 3`
+
+```java
+a[3] = 3
+```
+
+Compare with previous elements:
+
+```java
+3 == 5 → false
+
+3 == 2 → false
+
+3 == 5 → false
+```
+
+`3` is not a duplicate.
+
+---
+
+## When `i = 4`
+
+```java
+a[4] = 2
+```
+
+Compare with previous elements:
+
+```java
+2 == 5 → false
+
+2 == 2 → true
+```
+
+A duplicate is found, so it is skipped.
+
+---
+
+## Why not `j < n`?
+
+If we write:
+
+```java
+for (int j = 0; j < n; j++)
+```
+
+The program will also compare:
+
+```java
+a[i] == a[i]
+```
+
+For example:
+
+```java
+a[2] == a[2]
+
+5 == 5 → true
+```
+
+Every element would be considered a duplicate.
+
+Therefore, `j < i` is used to compare the current element only with the elements before it.
+*/
