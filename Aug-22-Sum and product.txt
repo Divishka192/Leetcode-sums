@@ -1,0 +1,154 @@
+You are given a positive integer n. Determine whether n is divisible by the sum of the following two values:
+
+The digit sum of n (the sum of its digits).
+
+The digit product of n (the product of its digits).
+
+Return true if n is divisible by this sum; otherwise, return false.
+
+ 
+
+Example 1:
+
+Input: n = 99
+
+Output: true
+
+Explanation:
+
+Since 99 is divisible by the sum (9 + 9 = 18) plus product (9 * 9 = 81) of its digits (total 99), the output is true.
+
+Example 2:
+
+Input: n = 23
+
+Output: false
+
+Explanation:
+
+Since 23 is not divisible by the sum (2 + 3 = 5) plus product (2 * 3 = 6) of its digits (total 11), the output is false.
+
+ 
+
+Constraints:
+
+1 <= n <= 106
+class Solution {
+    public boolean checkDivisibility(int n) {
+        int temp=n;
+        int sum=0;
+        int product=1;
+        while(temp!=0){
+        int d=temp%10;
+        sum+=d;
+        product*=d;
+        temp=temp/10;
+        }
+        return n%(sum+product)==0;
+        
+    }
+}
+
+
+Initially:
+
+temp = 99
+sum = 0
+product = 1
+Iteration 1
+temp = 99
+
+Get last digit:
+
+digit = 99 % 10
+      = 9
+
+Update:
+
+sum = 0 + 9 = 9
+product = 1 * 9 = 9
+
+Remove last digit:
+
+temp = 99 / 10
+     = 9
+
+Now:
+
+temp = 9
+sum = 9
+product = 9
+Iteration 2
+temp = 9
+
+Get last digit:
+
+digit = 9 % 10
+      = 9
+
+Update:
+
+sum = 9 + 9 = 18
+product = 9 * 9 = 81
+
+Remove last digit:
+
+temp = 9 / 10
+     = 0
+
+Now:
+
+temp = 0
+sum = 18
+product = 81
+Loop stops
+
+The condition is:
+
+while (temp > 0)
+
+Since:
+
+temp = 0
+
+0 > 0 is false, so the loop stops.
+
+Finally:
+
+sum + product
+= 18 + 81
+= 99
+
+Then:
+
+return n % (sum + product) == 0;
+
+becomes:
+
+99 % 99 == 0
+true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
