@@ -1,0 +1,75 @@
+Problem Statement
+
+Given an integer array of size N, answer Q queries. Each query contains two indices L and R. Find the sum of all elements from index L to index R inclusive.
+
+Example:
+
+Input:
+N = 5
+Array = [2, 4, 1, 3, 5]
+
+Query:
+L = 1, R = 3
+
+Output:
+8
+
+Because:
+
+Array[1] + Array[2] + Array[3]
+= 4 + 1 + 3
+= 8
+
+
+PREFIX SUM
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        int[] prefix = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+
+            if (i == 0)
+                prefix[i] = a[i];
+            else
+                prefix[i] = prefix[i - 1] + a[i];
+        }
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(prefix[i] + " ");
+        }
+    }
+}
+
+
+
+
+5
+2 4 1 3 5
+
+Output:
+
+2 6 7 10 15
+Simple logic
+prefix[0] = a[0]
+
+prefix[i] = prefix[i-1] + a[i]
+
+So:
+
+2
+2+4 = 6
+6+1 = 7
+7+3 = 10
+10+5 = 15
+
+Time: O(n)
+Space: O(n)
