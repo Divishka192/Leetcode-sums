@@ -1,0 +1,59 @@
+Count Even Numbers
+Problem Statement
+
+Given an array of N integers, count how many elements are even.
+
+Example
+
+Input:
+
+6
+2 7 8 5 10 3
+
+Output:
+
+3
+
+Because:
+
+2 → even
+7 → odd
+8 → even
+5 → odd
+10 → even
+3 → odd
+Code
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            if (arr[i] % 2 == 0) {
+                count++;
+            }
+        }
+
+        System.out.println(count);
+    }
+}
+
+The important condition is:
+
+arr[i] % 2 == 0
+
+If remainder is 0, the number is even.
+
