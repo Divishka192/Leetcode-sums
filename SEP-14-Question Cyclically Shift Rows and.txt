@@ -1,0 +1,174 @@
+Question: Cyclically Shift Rows and Columns
+
+You are given:
+
+An integer n
+A 2D integer array grid of size n × n
+An integer array rowShift of length n
+An integer array colShift of length n
+Meaning
+rowShift[i] = number of positions to cyclically left shift row i.
+colShift[j] = number of positions to cyclically upward shift column j.
+
+First, shift every row according to rowShift.
+
+Then, shift every column according to colShift.
+
+Return the final grid.
+
+Important
+
+For a left shift by k:
+
+newColumn = (oldColumn - k + n) % n
+
+For an upward shift by k:
+
+newRow = (oldRow - k + n) % n
+Example 2
+n = 3
+
+grid =
+[
+ [1,2,3],
+ [4,5,6],
+ [7,8,9]
+]
+
+rowShift = [1,2,0]
+
+colShift = [2,2,1]
+
+Expected:
+
+[
+ [7,8,5],
+ [2,3,9],
+ [6,4,1]
+]
+Step 1: Shift rows
+Row 0
+
+Original:
+
+[1,2,3]
+
+rowShift[0] = 1
+
+Left shift by 1:
+
+[2,3,1]
+Row 1
+
+Original:
+
+[4,5,6]
+
+rowShift[1] = 2
+
+Left shift by 2:
+
+[6,4,5]
+Row 2
+
+Original:
+
+[7,8,9]
+
+rowShift[2] = 0
+
+No shift:
+
+[7,8,9]
+
+So after row shifting:
+
+[
+ [2,3,1],
+ [6,4,5],
+ [7,8,9]
+]
+Step 2: Shift columns upward
+
+Now:
+
+colShift = [2,2,1]
+Column 0
+
+Column 0 is:
+
+2
+6
+7
+
+Shift upward by 2:
+
+7
+2
+6
+Column 1
+
+Column 1 is:
+
+3
+4
+8
+
+Shift upward by 2:
+
+8
+3
+4
+Column 2
+
+Column 2 is:
+
+1
+5
+9
+
+Shift upward by 1:
+
+5
+9
+1
+
+Final:
+
+[
+ [7,8,5],
+ [2,3,9],
+ [6,4,1]
+]
+
+JAVA CODE
+class Solution {
+    public int[][] cyclicShift(int n, int[][] grid, int[] rowShift, int[] colShift) {
+
+        int[][] a = new int[n][n];
+
+        // Step 1: Shift rows to the left
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                int col = (j - rowShift[i] + n) % n;
+
+                a[i][col] = grid[i][j];
+            }
+        }
+
+        // Step 2: Shift columns upward
+        int[][] result = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                int row = (i - colShift[j] + n) % n;
+
+                result[row][j] = a[i][j];
+            }
+        }
+
+        return result;
+    }
+}
