@@ -1,0 +1,27 @@
+836. Rectangle Overlap
+
+Problem:
+Two rectangles are given. Check whether they overlap.
+
+
+If there is some common area → true.
+
+class Solution {
+    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+        return rec1[0] < rec2[2] &&
+               rec2[0] < rec1[2] &&
+               rec1[1] < rec2[3] &&
+               rec2[1] < rec1[3];
+    }
+}
+
+Explanation:
+
+For rectangles to overlap:
+
+left1 < right2
+left2 < right1
+bottom1 < top2
+bottom2 < top1
+
+All four must be true.
