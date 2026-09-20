@@ -1,0 +1,91 @@
+Count Intersecting Intervals
+Question
+
+Given an array of intervals, find the number of pairs of intervals that intersect (overlap).
+
+Two intervals intersect if they have at least one number in common.
+
+Example 1
+Input:
+intervals = [[1,5], [2,4], [7,9]]
+
+Check all pairs:
+
+[1,5] & [2,4] → ✅ Intersect
+[1,5] & [7,9] → ❌ No intersection
+[2,4] & [7,9] → ❌ No intersection
+
+Therefore:
+
+Output: 1
+Example 2
+Input:
+intervals = [[1,5], [2,4], [3,6]]
+
+Pairs:
+
+[1,5] & [2,4] → ✅
+[1,5] & [3,6] → ✅
+[2,4] & [3,6] → ✅
+
+Therefore:
+
+Output: 3
+Example 3 — No intersection
+Input:
+intervals = [[1,2], [4,5], [7,8]]
+[1,2] & [4,5] → ❌
+[1,2] & [7,8] → ❌
+[4,5] & [7,8] → ❌
+Output: 0
+Java Code
+class Solution {
+    public int countIntersectingIntervals(int[][] intervals) {
+        int count = 0;
+
+        for (int i = 0; i < intervals.length; i++) {
+            for (int j = i + 1; j < intervals.length; j++) {
+
+                if (intervals[i][0] <= intervals[j][1] &&
+                    intervals[j][0] <= intervals[i][1]) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+}
+How the code works
+
+For an interval:
+
+[1, 5]
+[0] = 1 → start
+[1] = 5 → end
+
+So:
+
+intervals[i][0]   // start of interval i
+intervals[i][1]   // end of interval i
+
+intervals[j][0]   // start of interval j
+intervals[j][1]   // end of interval j
+Overlap condition
+intervals[i][0] <= intervals[j][1]
+
+means:
+
+Start of i is before or equal to the end of j.
+
+And:
+
+intervals[j][0] <= intervals[i][1]
+
+means:
+
+Start of j is before or equal to the end of i.
+
+If both are true, the intervals intersect:
+
+count++;
