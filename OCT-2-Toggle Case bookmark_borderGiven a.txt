@@ -1,0 +1,42 @@
+Toggle Case bookmark_borderGiven a string, toggle the case of each character in the given string.
+
+Input Format
+The first and only input line contains a string S, consisting of lowercase and uppercase characters.
+
+Output Format
+Print the toggled string.
+
+Constraints
+1 <= len(S) <= 100
+
+Example
+Input
+SMartINTERviewS
+
+Output
+smARTinterVIEWs
+
+Explanation
+
+Self Explanatory
+
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner sc=new Scanner(System.in);
+        String s=sc.next();
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(Character.isUpperCase(c)){
+                System.out.print(Character.toLowerCase(c));
+            }
+            else{
+                System.out.print(Character.toUpperCase(c));
+            }
+        }
+    }
+}
