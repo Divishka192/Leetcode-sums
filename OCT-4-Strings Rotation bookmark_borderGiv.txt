@@ -1,0 +1,52 @@
+Strings Rotation bookmark_borderGiven two strings A and B of length N, check if string A is a rotation of string B.
+
+Input Format
+The first line of input contains N - the length of the strings. The second line contains A and B separated by a space.
+
+Output Format
+Print "yes" if A is a rotation of B, otherwise "no".
+
+Constraints
+1 <= N <= 500
+'a' <= A[i], B[i] <= 'z'
+
+Example
+Input
+5
+hello lohel
+
+Output
+yes
+
+Explanation
+
+Self Explanatory
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        String a=sc.next();
+        String b=sc.next();
+       if(a.length()!=b.length()){
+        System.out.print("no");
+        return;
+       }
+       String temp=b+b;
+       if(temp.contains(a)){
+        System.out.print("yes");
+        return;
+       }
+     
+        System.out.print("no");
+       
+
+    
+        
+
+    }
+}
