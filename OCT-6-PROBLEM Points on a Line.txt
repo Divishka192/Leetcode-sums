@@ -1,0 +1,113 @@
+PROBLEM: Points on a Line
+
+Given three points (x1, y1), (x2, y2), and (x3, y3),
+check whether all three points lie on the same straight line.
+
+Input:
+The first line contains T, the number of test cases.
+
+For each test case:
+The first line contains x1 y1.
+The second line contains x2 y2.
+The third line contains x3 y3.
+
+Output:
+Print "Yes" if the three points lie on the same line.
+Otherwise, print "No".
+
+Example:
+
+Input:
+3
+1 1
+2 2
+3 3
+1 1
+2 3
+3 4
+0 0
+2 2
+4 4
+
+Output:
+Yes
+No
+Yes
+
+
+APPROACH:
+
+Three points are on the same line if their slopes are equal.
+
+Instead of using division, we use cross multiplication.
+
+(y2 - y1) / (x2 - x1) = (y3 - y2) / (x3 - x2)
+
+Cross multiply:
+
+(y2 - y1) * (x3 - x2)
+=
+(y3 - y2) * (x2 - x1)
+
+If both sides are equal, the points are collinear.
+
+We use long because multiplication can produce large values.
+
+
+JAVA SOLUTION:
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+
+            long x1 = sc.nextLong();
+            long y1 = sc.nextLong();
+
+            long x2 = sc.nextLong();
+            long y2 = sc.nextLong();
+
+            long x3 = sc.nextLong();
+            long y3 = sc.nextLong();
+
+            long a = (y2 - y1) * (x3 - x2);
+            long b = (y3 - y2) * (x2 - x1);
+
+            if (a == b) {
+                System.out.println("Yes");
+            } else {
+                System.out.println("No");
+            }
+        }
+
+        sc.close();
+    }
+}
+
+
+TIME COMPLEXITY:
+
+O(T)
+
+SPACE COMPLEXITY:
+
+O(1)
+
+
+MEMORY TRICK:
+
+Points on a line → Slopes equal
+
+Avoid division → Cross multiply
+
+Formula:
+
+(y2-y1)(x3-x2) = (y3-y2)(x2-x1)
