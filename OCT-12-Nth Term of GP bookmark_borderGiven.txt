@@ -1,0 +1,40 @@
+Nth Term of GP bookmark_borderGiven the first term a, common ratio r, and an integer N, your task is to find Nth term of Geometric Progression(GP).
+
+Input Format
+The first and only line of input contains a, r and N.
+
+Output Format
+Print Nth term of the Geometric Progression(GP) series.
+
+Constraints
+1 <= a <= 20
+1 <= r <= 10
+1 <= N <= 9
+
+Example
+Input
+1 2 3 
+
+Output
+4
+
+Explanation
+
+Self Explanatory
+
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int r=sc.nextInt();
+    int n=sc.nextInt();
+ int ans=(int)(a*Math.pow(r,n-1));
+    System.out.print(ans);
+    }
+}
