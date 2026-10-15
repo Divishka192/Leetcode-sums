@@ -1,0 +1,47 @@
+Binary Representation bookmark_borderGiven a positive integer, print its binary representation. 
+
+Input Format
+ The first line of input contains T - the number of test cases. It's followed by T lines, each line containing a single integer. 
+
+Output Format
+ For each test case, print a binary representation, separated by a new line. 
+
+Constraints
+ 1 <= T <= 10000 
+ 0 <= N <= 109
+
+Example
+Input
+ 5
+ 10
+ 15
+ 7
+ 1
+ 120
+
+Output
+ 1010
+ 1111
+ 111
+ 1
+ 1111000
+
+Explanation
+
+Self Explanatory
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+            Scanner sc=new Scanner(System.in);
+            int t=sc.nextInt();
+            while(t-->0){
+                int n=sc.nextInt();
+                System.out.println(Integer.toBinaryString(n));
+                }
+            }
+    }
