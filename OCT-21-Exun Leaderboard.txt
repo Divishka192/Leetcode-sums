@@ -1,0 +1,82 @@
+Exun Leaderboard
+The Exun quiz leaderboard has no ties. Your team is ranked 
+X
+X-th in the leaderboard, and your rival team is ranked 
+Y
+Y-th.
+
+Find how many teams are ranked strictly between you and your rival.
+
+Input Format
+The first and only line of input contains 
+2
+2 integers - 
+X
+X and 
+Y
+Y.
+Output Format
+Output the number of teams that are ranked strictly between you and your rival.
+
+Constraints
+1
+≤
+X
+,
+Y
+≤
+10
+1≤X,Y≤10
+X
+≠
+Y
+X=Y
+Sample 1:
+Input
+Output
+1 5
+3
+Explanation:
+Your team is ranked 
+1
+1, and your rival's team is ranked 
+5
+5. There are 
+3
+3 teams (
+2
+2nd, 
+3
+3rd and 
+4
+4th) between you.
+
+Sample 2:
+Input
+Output
+2 1
+0
+Explanation:
+Your rival team is 
+1
+1st, and you are 
+2
+2nd, no teams between you.
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int x=sc.nextInt();
+		int y=sc.nextInt();
+		int ans=Math.abs(y-x)-1;
+		System.out.print(ans);
+
+	}
+}
