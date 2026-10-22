@@ -1,0 +1,269 @@
+Exun Handshake
+N
+N groups of participants are trying to reach the annual Exun symposium. Group 
+i
+i has 
+A
+i
+A 
+i
+​
+  people.
+
+By tradition, everyone at the symposium shakes hands with everyone else exactly once as a sign of sportsmanship, whether they are from the same group or not. So if 
+P
+P people attend in total, there are 
+P
+(
+P
+−
+1
+)
+2
+2
+P(P−1)
+​
+  handshakes.
+
+The ceremony takes a long time, and the organisers only have time for 
+M
+M handshakes. They will invite some of the groups (a group comes in full or not at all) so that the total number of handshakes is at most 
+M
+M.
+
+Find the maximum number of groups that can be invited.
+
+Inviting no groups at all is allowed, and gives 
+0
+0 handshakes.
+
+Input Format
+The first line of input contains a single integer 
+T
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains two space-separated integers 
+N
+N and 
+M
+M.
+The second line contains 
+N
+N space-separated integers 
+A
+1
+,
+A
+2
+,
+…
+,
+A
+N
+A 
+1
+​
+ ,A 
+2
+​
+ ,…,A 
+N
+​
+ .
+Output Format
+For each test case, output on a new line the maximum number of groups that can be invited.
+
+Constraints
+1
+≤
+T
+≤
+100
+1≤T≤100
+1
+≤
+N
+≤
+100
+1≤N≤100
+0
+≤
+M
+≤
+10
+8
+0≤M≤10 
+8
+ 
+1
+≤
+A
+i
+≤
+100
+1≤A 
+i
+​
+ ≤100
+Sample 1:
+Input
+Output
+4
+4 10
+3 1 4 2
+3 0
+2 5 3
+5 45
+2 2 2 2 2
+3 0
+4 1 1
+2
+0
+5
+1
+Explanation:
+Test case 
+1
+1: Inviting the groups with 
+1
+1 and 
+2
+2 people gives 
+3
+3 people and 
+3
+⋅
+2
+2
+=
+3
+2
+3⋅2
+​
+ =3 handshakes. Any 
+3
+3 groups bring at least 
+1
++
+2
++
+3
+=
+6
+1+2+3=6 people, which means at least 
+15
+>
+10
+15>10 handshakes.
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int m=sc.nextInt();
+		    int a[]=new int[n];
+		    for(int i=0;i<n;i++){
+		        a[i]=sc.nextInt();
+		    }
+		    Arrays.sort(a);
+		    int  people=0,count=0;
+		    for(int i=0;i<n;i++){
+		        int p=people+a[i];
+		        
+		    
+		    long ans=(long) p*(p-1)/2;
+		    if(ans<=m){
+		        people=p;
+		        count++;
+		    }
+		    else{
+		        break;
+		    }
+		    }
+		    
+		    System.out.println(count);
+		  
+		}
+
+	}
+}
+
+
+2 people
+
+Only 1 handshake is possible.
+
+\(\frac{2(2-1)}{2}=1\)
+
+
+
+
+
+
+
+
+
+
+
+
+3 people
+
+Everyone shakes hands with the other two people.
+
+\(\frac{3(3-1)}{2}=3\)
+
+
+
+
+
+
+
+
+
+
+
+
+4 people
+
+The total is 6 handshakes.
+
+\(\frac{4(4-1)}{2}=6\)
+
+
+
+3. Understand the first sample
+Input:
+N = 4, M = 10
+A = [3, 1, 4, 2]
+
+
+This means:
+- There are 4 groups.
+- The maximum allowed handshakes are 10.
+- The groups contain 3, 1, 4 and 2 people, respectively.
+We want to invite the maximum number of groups without exceeding 10 handshakes.
+
+First, sort the group sizes:
+
+[1, 2, 3, 4]
+
+Now check what happens when we invite the smallest groups first.
+Groups invited	Total people	Handshakes	Can invite?
+Group of 1	1	0	Yes
+Groups of 1 and 2	3	3	Yes
+Groups of 1, 2 and 3	6	15	No
+When we invite 3 groups, there are 6 people, resulting in 15 handshakes. But our limit is only 10.
+
+Therefore, we can invite only 2 groups.
+
+Output: 2
