@@ -1,138 +1,99 @@
+88. Merge Sorted Array
+Solved
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
 
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
 
-You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
-
-Increment the large integer by one and return the resulting array of digits.
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
 
  
 
 Example 1:
 
-Input: digits = [1,2,3]
-Output: [1,2,4]
-Explanation: The array represents the integer 123.
-Incrementing by one gives 123 + 1 = 124.
-Thus, the result should be [1,2,4].
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
 Example 2:
 
-Input: digits = [4,3,2,1]
-Output: [4,3,2,2]
-Explanation: The array represents the integer 4321.
-Incrementing by one gives 4321 + 1 = 4322.
-Thus, the result should be [4,3,2,2].
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Explanation: The arrays we are merging are [1] and [].
+The result of the merge is [1].
 Example 3:
 
-Input: digits = [9]
-Output: [1,0]
-Explanation: The array represents the integer 9.
-Incrementing by one gives 9 + 1 = 10.
-Thus, the result should be [1,0].
+Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+Output: [1]
+Explanation: The arrays we are merging are [] and [1].
+The result of the merge is [1].
+Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
  
 
 Constraints:
 
-1 <= digits.length <= 100
-0 <= digits[i] <= 9
-digits does not contain any leading 0's.
+nums1.length == m + n
+nums2.length == n
+0 <= m, n <= 200
+1 <= m + n <= 200
+-109 <= nums1[i], nums2[j] <= 109
  
 
 
+Merge Sorted Array - LeetCode 88
+-------------------------------
 
-LeetCode 66 - Plus One
+Java Code:
 
 class Solution {
-    public int[] plusOne(int[] digits) {
 
-        for (int i = digits.length - 1; i >= 0; i--) {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
 
-            if (digits[i] < 9) {
-                digits[i]++;
-                return digits;
-            }
+        int i = 0;
 
-            digits[i] = 0;
+        // Copy nums2 into nums1
+        for (int j = m; j < m + n; j++) {
+            nums1[j] = nums2[i];
+            i++;
         }
 
-        int[] result = new int[digits.length + 1];
-        result[0] = 1;
+        // Sort the merged array using Bubble Sort
+        for (int a = 0; a < nums1.length - 1; a++) {
 
-        return result;
+            for (int b = 0; b < nums1.length - a - 1; b++) {
+
+                if (nums1[b] > nums1[b + 1]) {
+
+                    int temp = nums1[b];
+                    nums1[b] = nums1[b + 1];
+                    nums1[b + 1] = temp;
+                }
+            }
+        }
     }
 }
 
-
-1. Start from the last digit
-
-for (int i = digits.length - 1; i >= 0; i--)
-
-We start from the right side because we need to add 1 to the last digit.
-
 Example:
 
-[1, 2, 3]
-       ↑
-      start
+Input:
+nums1 = [1,2,3,0,0,0]
+m = 3
 
-2. Check if digit is less than 9
+nums2 = [2,5,6]
+n = 3
 
-if (digits[i] < 9)
+Step 1: Copy nums2 into nums1
 
-If the digit is 0 to 8, simply add 1.
+[1,2,3,2,5,6]
 
-digits[i]++;
+Step 2: Sort the array
 
-Example:
+[1,2,2,3,5,6]
 
-[1,2,3] → [1,2,4]
+Output:
 
-Then:
-
-return digits;
-
-We are finished.
-
-3. If digit is 9
-
-digits[i] = 0;
-
-Because:
-
-9 + 1 = 10
-
-So 9 becomes 0, and the 1 is carried to the next digit.
-
-Example:
-
-[1,2,9]
-     ↓
-[1,2,0]
-
-The loop then moves to 2 and adds 1:
-
-[1,3,0]
-
-4. What if every digit is 9?
-
-Example:
-
-[9,9,9]
-
-All become 0:
-
-[0,0,0]
-
-So we create a new array:
-
-int[] result = new int[digits.length + 1];
-
-Its size is 4.
-
-[0,0,0,0]
-
-Then:
-
-result[0] = 1;
-
-Gives:
-
-[1,0,0,0]
+[1,2,2,3,5,6]
