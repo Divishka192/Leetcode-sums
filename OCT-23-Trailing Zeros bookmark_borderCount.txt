@@ -1,0 +1,123 @@
+Trailing Zeros bookmark_borderCount the number of trailing 0s in the factorial of a given number.
+
+Input Format
+The first line of input contains T - the number of test cases. It is followed by T lines, each containing an integer N.
+
+Output Format
+For each test case, print the number of trailing 0s in N!, separated by a new line.
+
+Constraints
+1 <= T <= 10000
+1 <= N <= 1015
+
+Example
+Input
+3
+2
+5
+100
+
+Output
+0
+1
+24
+
+Explanation
+
+2! = 2 [No trailing zeros]
+5! = 120 [Trailing zeros=1]
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            long n = sc.nextLong();
+            long count = 0;
+
+            while (n >= 5) {
+                n /= 5;
+                count += n;
+            }
+
+            System.out.println(count);
+        }
+    }
+}
+
+
+Trailing zeros in a factorial are caused by factors of 10 = 2 × 5. Since factorials have more factors of 2 than 5, we count the factors of 5.
+
+For example, 
+100
+!
+100!:
+
+100
+/
+5
+=
+20
+100/5=20
+
+100
+/
+25
+=
+4
+100/25=4
+
+100
+/
+125
+=
+0
+100/125=0
+
+Total trailing zeros = 
+20
++
+4
+=
+24
+20+4=24.
+
+Sample input
+
+text
+3
+2
+5
+100
+Output
+
+text
+0
+1
+24
+Time complexity: 
+O
+(
+log
+⁡
+5
+N
+)
+O(log 
+5
+​
+ N) per test case.
+ Use long because 
+N
+N can be as large as 
+10
+15
+10 
+15
+ .
