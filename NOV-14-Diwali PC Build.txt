@@ -1,0 +1,146 @@
+Diwali PC Build
+Chef wants to build a PC for Diwali, which is 
+K
+K days away.
+
+The components currently cost 
+P
+P rupees in total, including RAM. The RAM price increases by 
+D
+D rupees each day, while all other prices remain unchanged.
+
+Chef has decided to buy the components on Diwali. Will his budget of 
+B
+B rupees be enough?
+
+Input Format
+The first line contains an integer 
+T
+T, the number of test cases.
+Each test case contains four space-separated integers 
+P
+P, 
+D
+D, 
+K
+K, and 
+B
+B — the current total cost, the daily increase in RAM price, the number of days until Diwali, and Chef's budget, respectively.
+Output Format
+For each test case, print YES if Chef can afford all the components on Diwali, or NO otherwise, on a separate line.
+
+You may print the answer in any combination of uppercase and lowercase letters.
+
+Constraints
+1
+≤
+T
+≤
+100
+1≤T≤100
+1
+≤
+P
+,
+B
+≤
+10
+5
+1≤P,B≤10 
+5
+ 
+1
+≤
+D
+≤
+500
+1≤D≤500
+0
+≤
+K
+≤
+30
+0≤K≤30
+Sample 1:
+Input
+Output
+4
+100 10 2 120
+200 20 3 250
+150 5 4 180
+100 10 0 90
+YES
+NO
+YES
+NO
+Explanation:
+Test case 1: After 
+2
+2 days, the total cost is 
+100
++
+10
+×
+2
+=
+120
+100+10×2=120 rupees. Chef's budget exactly covers the cost.
+Test case 2: After 
+3
+3 days, the total cost is 
+200
++
+20
+×
+3
+=
+260
+200+20×3=260 rupees, which exceeds his budget of 
+250
+250 rupees.
+Test case 3: After 
+4
+4 days, the total cost is 
+150
++
+5
+×
+4
+=
+170
+150+5×4=170 rupees, which is within his budget of 
+180
+180 rupees.
+Test case 4: Diwali is today, so the total cost remains 
+100
+100 rupees. His budget of 
+90
+90 rupees is insufficient.
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int T = sc.nextInt();
+
+        while (T-- > 0) {
+            int P = sc.nextInt();
+            int D = sc.nextInt();
+            int K = sc.nextInt();
+            int B = sc.nextInt();
+
+            int total = P + (D * K);
+
+            if (total <= B) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+
+        sc.close();
+    }
+}
