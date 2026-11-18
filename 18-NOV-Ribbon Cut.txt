@@ -1,0 +1,113 @@
+Ribbon Cut
+You have a ribbon of length 
+N
+N. You want to cut it into two pieces of positive integer lengths such that one piece is exactly twice as long as the other.
+
+Determine whether this is possible.
+
+Input Format
+The only line of input contains a single integer 
+N
+N.
+Output Format
+Output YES if it is possible, and NO otherwise.
+
+Each letter of YES and NO may be printed in either uppercase or lowercase.
+
+Constraints
+1
+≤
+N
+≤
+20
+1≤N≤20
+Sample 1:
+Input
+Output
+6
+YES
+Explanation:
+Cut the ribbon into pieces of lengths 
+2
+2 and 
+4
+4.
+
+Sample 2:
+Input
+Output
+10
+NO
+Explanation:
+The possible size pairs after cutting are: 
+(
+1
+,
+9
+)
+,
+(
+2
+,
+8
+)
+,
+(
+3
+,
+7
+)
+,
+(
+4
+,
+6
+)
+,
+(
+5
+,
+5
+)
+(1,9),(2,8),(3,7),(4,6),(5,5). It can be verified that none of them work.
+
+Sample 3:
+Input
+Output
+9
+YES
+accepted
+Accepted
+7006
+total-Submissions
+Submissions
+9176
+accuracy
+Accuracy
+85.19
+Did you like the problem statement?
+14 users found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int k=sc.nextInt();
+		if(k%3==0){
+		    System.out.println("YES");
+		}
+		else{
+		    System.out.println("NO");
+		}
+
+	}
+}
