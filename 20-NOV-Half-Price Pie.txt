@@ -1,0 +1,202 @@
+Half-Price Pie
+Chef runs a bakery. Every day for the next 
+N
+N days, he bakes exactly one salted caramel pie and sells it.
+The price of the pie on day 
+i
+i is 
+A
+i
+A 
+i
+​
+ . All prices are even.
+
+Chef will run a discount on exactly two consecutive days: on those two days, the price of the pie is halved.
+
+Find the maximum total amount Chef can earn over the 
+N
+N days, if he chooses the two days to halve price appropriately.
+
+Input Format
+The first line of input will contain a single integer 
+T
+T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains a single integer 
+N
+N, the number of days.
+The second line contains 
+N
+N space-separated integers 
+A
+1
+,
+A
+2
+,
+…
+,
+A
+N
+A 
+1
+​
+ ,A 
+2
+​
+ ,…,A 
+N
+​
+ , denoting the prices of the pie.
+Output Format
+For each test case, output on a new line the maximum total amount Chef can earn.
+
+Constraints
+1
+≤
+T
+≤
+100
+1≤T≤100
+2
+≤
+N
+≤
+100
+2≤N≤100
+2
+≤
+A
+i
+≤
+100
+2≤A 
+i
+​
+ ≤100
+Each 
+A
+i
+A 
+i
+​
+  is even.
+Sample 1:
+Input
+Output
+4
+2
+10 6
+6
+12 4 4 30 2 50
+5
+2 4 10 8 6
+4
+10 8 6 2
+8
+98
+27
+22
+Explanation:
+Test case 
+1
+1: There are only two days, so Chef must discount the pie on both days. His earnings will equal 
+5
++
+3
+=
+8
+5+3=8.
+
+Test case 
+2
+2: Discounting days 
+2
+2 and 
+3
+3 (prices 
+4
+4 and 
+4
+4) gives 
+12
++
+2
++
+2
++
+30
++
+2
++
+50
+=
+98
+12+2+2+30+2+50=98.
+
+Test case 
+4
+4: Discounting the last two days gives 
+10
++
+8
++
+3
++
+1
+=
+22
+10+8+3+1=22.
+
+accepted
+Accepted
+5236
+total-Submissions
+Submissions
+6725
+accuracy
+Accuracy
+83.14
+Did you like the problem statement?
+8 users found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            int n = sc.nextInt();
+
+            int[] a = new int[n];
+            int total = 0;
+
+            for (int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+                total += a[i];
+            }
+
+            int minSum = Integer.MAX_VALUE;
+
+            for (int i = 0; i < n - 1; i++) {
+                minSum = Math.min(minSum, a[i] + a[i + 1]);
+            }
+
+            int ans = total - minSum / 2;
+
+            System.out.println(ans);
+        }
+
+        sc.close();
+    }
+}
