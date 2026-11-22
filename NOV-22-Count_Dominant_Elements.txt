@@ -1,0 +1,42 @@
+Count Dominant Elements
+
+Question:
+You are given an integer array nums.
+
+An element in nums is called dominant if it is greater than or equal to the average of its immediate neighbors.
+
+The immediate neighbors of nums[i] are nums[i - 1] and nums[i + 1], when those indices exist.
+
+A single element with no neighbors is considered dominant.
+
+Return the number of dominant elements in nums.
+
+Java Code:
+
+class Solution {
+    public int countDominantElements(int[] nums) {
+        int count = 0;
+
+        for(int i = 0; i < nums.length; i++) {
+            if(nums.length == 1) {
+                count++;
+            }
+            else if(i == 0) {
+                if(nums[i] >= nums[i+1])
+                    count++;
+            }
+            else if(i == nums.length-1) {
+                if(nums[i] >= nums[i-1])
+                    count++;
+            }
+            else {
+                int sum = nums[i-1] + nums[i+1];
+
+                if(2 * nums[i] >= sum)
+                    count++;
+            }
+        }
+
+        return count;
+    }
+}
