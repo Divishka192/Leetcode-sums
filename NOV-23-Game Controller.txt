@@ -1,0 +1,99 @@
+Game Controller
+Chef is playing a game where his character starts at position 
+0
+0.
+
+Pressing the right button moves the character 
+1
+1 step to the right. Pressing the left button moves it 
+1
+1 step to the left.
+
+Chef presses the right button 
+R
+R times and the left button 
+L
+L times. Find how many steps the character is from its starting position after all the presses.
+
+Input Format
+The only line contains two space-separated integers 
+R
+R and 
+L
+L.
+
+Output Format
+Print the number of steps between the character's final position and its starting position.
+
+Constraints
+0
+≤
+R
+,
+L
+≤
+100
+0≤R,L≤100
+Sample 1:
+Input
+Output
+3 8
+5
+Explanation:
+The character finishes 
+5
+5 steps to the left of its starting position, so the distance is 
+5
+5.
+
+Sample 2:
+Input
+Output
+4 4
+0
+Explanation:
+The character returns to its starting position.
+
+Sample 3:
+Input
+Output
+10 2
+8
+Explanation:
+The character finishes 
+8
+8 steps to the right of its starting position, so the distance is 
+8
+8.
+
+accepted
+Accepted
+2255
+total-Submissions
+Submissions
+2831
+accuracy
+Accuracy
+89.19
+Did you like the problem statement?
+1 user found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int G=sc.nextInt();
+		int D=sc.nextInt();
+		System.out.println(Math.abs(G-D));
+
+	}
+}
