@@ -1,0 +1,131 @@
+A Ride for Two
+Chef and his two friends want to take a boat ride. They have 
+A
+A, 
+B
+B, and 
+C
+C rupees, respectively.
+
+The boat can carry only two people, and a ride costs 
+X
+X rupees in total. The two people taking the ride must pay using their own money; the person staying behind cannot contribute.
+
+Determine whether any two of them can afford the ride.
+
+Input Format
+The first line contains an integer 
+T
+T, the number of test cases.
+Each test case contains four space-separated integers 
+A
+A, 
+B
+B, 
+C
+C, and 
+X
+X — the amounts of money the three friends have and the total cost of the ride.
+Output Format
+For each test case, print YES if any two friends can afford the ride, or NO otherwise, on a separate line.
+
+You may print the answer in any combination of uppercase and lowercase letters.
+
+Constraints
+1
+≤
+T
+≤
+1000
+1≤T≤1000
+1
+≤
+A
+,
+B
+,
+C
+,
+X
+≤
+100
+1≤A,B,C,X≤100
+Sample 1:
+Input
+Output
+4
+2 3 4 8
+6 2 3 9
+3 7 5 10
+4 4 4 9
+NO
+YES
+YES
+NO
+Explanation:
+Test case 1: No pair has more than 
+3
++
+4
+=
+7
+3+4=7 rupees, so they cannot afford the ride costing 
+8
+8 rupees.
+Test case 2: Chef and the friend with 
+3
+3 rupees can combine their money to pay exactly 
+9
+9 rupees.
+Test case 3: The friends with 
+7
+7 and 
+5
+5 rupees have 
+12
+12 rupees together, enough for the ride costing 
+10
+10 rupees.
+Test case 4: Every pair has 
+8
+8 rupees together, which is less than the cost of 
+9
+9 rupees.
+accepted
+Accepted
+2078
+total-Submissions
+Submissions
+2748
+accuracy
+Accuracy
+81.08
+Did you like the problem statement?
+1 user found this helpful
+More Info
+Time limit1 secs
+Memory limit1.5 GB
+Source Limit50000 Bytes
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+int T=sc.nextInt();
+while(T-->0){
+    int x=sc.nextInt();
+    int y=sc.nextInt();
+    int z=sc.nextInt();
+    int d=sc.nextInt();
+    if(x+y>=d||x+z>=d||y+z>=d)
+    System.out.println("YES");
+    else
+    System.out.println("NO");
+}
+	}
+}
