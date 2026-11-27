@@ -1,0 +1,79 @@
+3360. Stone Removal Game
+Solved
+Easy
+Topics
+premium lock icon
+Companies
+Hint
+Alice and Bob are playing a game where they take turns removing stones from a pile, with Alice going first.
+
+Alice starts by removing exactly 10 stones on her first turn.
+For each subsequent turn, each player removes exactly 1 fewer stone than the previous opponent.
+The player who cannot make a move loses the game.
+
+Given a positive integer n, return true if Alice wins the game and false otherwise.
+
+ 
+
+Example 1:
+
+Input: n = 12
+
+Output: true
+
+Explanation:
+
+Alice removes 10 stones on her first turn, leaving 2 stones for Bob.
+Bob cannot remove 9 stones, so Alice wins.
+Example 2:
+
+Input: n = 1
+
+Output: false
+
+Explanation:
+
+Alice cannot remove 10 stones, so Alice loses.
+ 
+
+Constraints:
+
+1 <= n <= 50
+ 
+
+Seen this question in a real interview before?
+1/6
+Yes
+No
+Accepted
+84,188/160.8K
+Acceptance Rate
+52.4%
+Topics
+icon
+Companies
+Hint 1
+Similar Questions
+Discussion (91)
+
+
+Choose a type
+
+
+
+Copyright © 2026 LeetCode. All rights reserved.
+class Solution {
+    public boolean canAliceWin(int n) {
+         int stones = n;
+        int remove = 10;
+        int count = 0;
+
+        while (stones >= remove) {
+            stones -= remove;
+            remove--;
+         count++;
+        }
+
+        return count % 2 == 1;
+    }
+}
